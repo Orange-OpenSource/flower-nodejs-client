@@ -12,7 +12,7 @@
 */
 
 const tf = require('@tensorflow/tfjs-node');
-const {Client} = require('./node/flwr/client/client');
+const {Client} = require('../src/node/flwr/client/client');
 
 const limit = 10;
 const nb = 100;
