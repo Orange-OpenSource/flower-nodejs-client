@@ -11,7 +11,7 @@
 * Author: Emile Bergin <emile.bergin@orange.com>
 */
 
-const {start_tfjs_client} = require('./node/flwr/client/app');
+const {start_tfjs_client} = require('../src/node/flwr/client/app');
 const {Tfjs_Client} = require('./tfjs_Client');
 
 
