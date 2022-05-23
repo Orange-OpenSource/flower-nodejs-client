@@ -26,7 +26,6 @@ const tfjs_Client = new Tfjs_Client();
   } catch (e) {
     console.error(e);
     throw e;
-    // Deal with the fact the chain failed
   }
 })();
 

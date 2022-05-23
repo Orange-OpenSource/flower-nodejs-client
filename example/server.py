@@ -200,11 +200,7 @@ class MyStrategy(Strategy):
         if self.fraction_eval == 0.0:
             return []
 
-        # Parameters and config
         config = {}
-        print("\n\nconfigure_evaluate")
-        print("PARAMETERS TO EVALUATE:")
-        print(parameters)
         if self.on_evaluate_config_fn is not None:
             # Custom evaluation config function provided
             config = self.on_evaluate_config_fn(rnd)
@@ -237,14 +233,10 @@ class MyStrategy(Strategy):
         if not self.accept_failures and failures:
             return None, {}
         # Convert results
-        print("\n\naggregate_fit")
-        print(results)
         weights_results = [
             (self.parameters_to_weights(fit_res.parameters), fit_res.num_examples)
             for client, fit_res in results
         ]
-        print("weights_results")
-        print(weights_results)
         res = self.weights_to_parameters(aggregate(weights_results)), {}
         return res
 
@@ -261,17 +253,12 @@ class MyStrategy(Strategy):
         if not self.accept_failures and failures:
             return None, {}
 
-        print("\n\naggregate_evaluation")
-        print(results)
-
         loss_aggregated = self.weighted_loss_avg(
             [
                 (evaluate_res.num_examples, evaluate_res.loss)
                 for _, evaluate_res in results
             ]
         )
-        # print("aggregate_evaluate")
-        # print(loss_aggregated)
         return loss_aggregated, {}
 
     def weighted_loss_avg(self, results: List[Tuple[int, float, Optional[float]]]) -> float:
@@ -284,29 +271,27 @@ class MyStrategy(Strategy):
         return sum(weighted_losses) / num_total_evaluation_examples
 
     def weights_to_parameters(self, weights: Weights) -> Parameters:
-        """Convert NumPy weights to parameters object."""
-        tensors = [self.ndarray_to_bytes(ndarray) for ndarray in weights]
-        return Parameters(tensors=tensors, tensor_type="numpy.nda")
+        """Convert weights to parameters object."""
+        tensors = [self.array_to_bytes(ndarray) for ndarray in weights]
+        return Parameters(tensors=tensors, tensor_type="Float64Array")
 
     def parameters_to_weights(self, parameters: Parameters) -> Weights:
-        """Convert parameters object to NumPy weights."""
-        return [self.bytes_to_ndarray(tensor) for tensor in parameters.tensors]
+        """Convert parameters object to weights."""
+        return [self.bytes_to_array(tensor) for tensor in parameters.tensors]
 
     # pylint: disable=R0201
-    def ndarray_to_bytes(self, ndarray: np.ndarray) -> bytes:
-        """Serialize NumPy array to bytes."""
+    def array_to_bytes(self, ndarray: np.ndarray) -> bytes:
+        """Serialize array to bytes."""
         return bytes(ndarray)
 
     # pylint: disable=R0201
-    def bytes_to_ndarray(self, tensor: bytes) -> np.ndarray:
-        """Deserialize NumPy array from bytes."""
-        res = np.frombuffer(tensor, dtype=np.float64)
-
-        return res
+    def bytes_to_array(self, tensor: bytes) -> np.ndarray:
+        """Deserialize array from bytes."""
+        return np.frombuffer(tensor, dtype=np.float64)
 
 # Start Flower server for three rounds of federated learning
 fl.server.start_server(
-    server_address='[::]:5006',
+    server_address='localhost:5006',
     config={"num_rounds": 10},
     strategy=MyStrategy()
 )

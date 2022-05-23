@@ -13,6 +13,7 @@
 
 const tf = require('@tensorflow/tfjs-node');
 const {Client} = require('../src/node/flwr/client/client');
+//const Client  = require('flower-nodejs-client'); ==> soon
 
 const limit = 10;
 const nb = 100;
@@ -59,11 +60,7 @@ class Tfjs_Client extends Client{
 
   // eslint-disable-next-line no-unused-vars
   async fit(parameters, config) {
-    await this.model.fit(xs, ys, {verbose:0, epochs:1, batchSize:32, callbacks: {
-      onEpochEnd: (epoch, logs) => {
-        // Plot the loss and accuracy values at the end of every training epoch.
-        console.log(epoch, logs);
-      }}});
+    await this.model.fit(xs, ys, {verbose:0, epochs:1, batchSize:32});
     return {
       parameters_prime: this.model.getWeights(),
       num_examples: nb,
