@@ -13,7 +13,7 @@
 
 const {Tfjs_Client} = require('./tfjs_Client');
 const {start_tfjs_client} = require('../index');
-//const {start_tfjs_client} = require('flower-nodejs-client'); ==> available soon
+//const {start_tfjs_client} = require('flower-client');
 
 
 const tfjs_Client = new Tfjs_Client();
