@@ -12,8 +12,8 @@
 */
 
 const tf = require('@tensorflow/tfjs-node');
-const {Client} = require('../src/node/flwr/client/client');
-//const Client  = require('flower-nodejs-client'); ==> soon
+const {Client} = require('../index');
+//const Client  = require('flower-nodejs-client'); ==> available soon
 
 const limit = 10;
 const nb = 100;
