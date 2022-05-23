@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Node client for Flower Federated Learning (flower.dev)",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Orange-OpenSource/flower-nodejs-client.git"
+  },
   "scripts": {
     "test": "npm run lint && npm run coverage",
     "lint": "eslint src/. test/. --config .eslintrc.json --fix",
