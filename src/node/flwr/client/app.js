@@ -17,6 +17,7 @@ const grpc = require('@grpc/grpc-js');
 const {Tfjs_client_wrapper} = require('./tfjs_client_wrapper');
 const {handle} = require('./grpc_client/message_handler');
 const fs = require('fs');
+const sleep = require('../common/sleep');
 
 const GRPC_MAX_MESSAGE_LENGTH = 512 * 1024 * 1024;
 
@@ -30,10 +31,6 @@ const packageDefinition = protoLoader.loadSync(
     oneofs: true
   });
 const transport_proto = grpc.loadPackageDefinition(packageDefinition).flower.transport;
-
-function sleep(s) {
-  return new Promise(resolve => setTimeout(resolve, s*1000));
-}
 
 async function start_client(
   server_address,
@@ -94,5 +91,3 @@ module.exports.start_tfjs_client = async function start_tfjs_client(
     grpc_max_message_length
   );
 };
-
-module.exports.sleep = sleep;

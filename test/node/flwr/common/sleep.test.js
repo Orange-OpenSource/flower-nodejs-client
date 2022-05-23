@@ -11,22 +11,17 @@
 * Author: Emile Bergin <emile.bergin@orange.com>
 */
 
-const {Tfjs_Client} = require('./tfjs_Client');
-const {start_tfjs_client} = require('../index');
-//const {start_tfjs_client} = require('flower-nodejs-client'); ==> available soon
+const {describe, it} = require('mocha');
+const {strict: assert} = require('assert');
+const {sleep} = require('../../../../src/node/flwr/common/sleep');
 
+describe('Sleep functions', () => {
 
-const tfjs_Client = new Tfjs_Client();
-
-(async () => {
-  try {
-    await start_tfjs_client(
-      'localhost:5006',
-      tfjs_Client,
-    );
-  } catch (e) {
-    console.error(e);
-    throw e;
-  }
-})();
-
+  it('sleep', async() => {
+    const t = 0.01;
+    const before = Date.now();
+    await sleep(t);
+    const after = Date.now();
+    assert.ok(((after-before)>t*10),'Ok');
+  });
+});

@@ -10,10 +10,9 @@
 *
 * Author: Emile Bergin <emile.bergin@orange.com>
 */
-
+/* todo
 const {describe, it, before, after} = require('mocha');
-const {strict: assert} = require('assert');
-const {sleep} = require('../../../../src/node/flwr/client/app');
+//const {strict: assert} = require('assert');
 //const {start_tfjs_client} = require('../../../../src/node/flwr/client/app');
 const FakeServer =  require('../../../resources/fakeServer').FakeServer;
 //const {getFakeClient} = require('../../../resources/fakeClient');
@@ -33,15 +32,8 @@ describe('app class', () => {
     done();
   });
 
-  it('sleep', async() => {
-    const t = 0.01;
-    const before = Date.now();
-    await sleep(t);
-    const after = Date.now();
-    assert.ok(((after-before)>t*10),'Ok');
-  });
-
   it('start_tfjs_client', async () => {
     //await start_tfjs_client(address, client); //todo
   });
 });
+ */
