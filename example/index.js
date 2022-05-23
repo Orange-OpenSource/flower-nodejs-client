@@ -22,7 +22,7 @@ const tfjs_Client = new Tfjs_Client();
   try {
     await start_tfjs_client(
       'localhost:5006',
-      tfjs_Client,
+      tfjs_Client
     );
   } catch (e) {
     console.error(e);
