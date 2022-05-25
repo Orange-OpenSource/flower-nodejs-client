@@ -3,6 +3,11 @@
   "version": "1.0.1",
   "description": "Node client for Flower Federated Learning (flower.dev)",
   "main": "index.js",
+  "keywords": [
+    "machine learning",
+    "federated learning",
+    "flower"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Orange-OpenSource/flower-nodejs-client.git"
@@ -17,11 +22,12 @@
     "dev-server": "nodemon --exec python3.8 example/server.py",
     "dev-client": "nodemon --delay 2 src/"
   },
-  "author": "emile.bergin@orange.com",
-  "license": "ISC",
+  "author": "Emile Bergin <emile.bergin@orange.com> (https://github.com/Bergin-Emile)",
+  "license": "Apache-2.0",
   "dependencies": {
     "@grpc/grpc-js": "^1.5.7",
     "@grpc/proto-loader": "^0.6.9",
+    "@tensorflow/tfjs": "^3.18.0",
     "@tensorflow/tfjs-node": "^3.16.0",
     "node": "^17.7.1"
   },

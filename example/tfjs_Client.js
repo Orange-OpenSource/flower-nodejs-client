@@ -11,9 +11,10 @@
 * Author: Emile Bergin <emile.bergin@orange.com>
 */
 
-const tf = require('@tensorflow/tfjs-node');
+const tf = require('@tensorflow/tfjs-node'); // Windows / Mac OS X Requires Python 2.7
+// or const tf = require('@tensorflow/tfjs');
 const {Client} = require('../index');
-//const Client  = require('flower-client');
+//const {Client}  = require('flower-client');
 
 const limit = 10;
 const nb = 100;

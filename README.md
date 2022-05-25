@@ -3,7 +3,7 @@ Package that allows you to implement a [Flower](http://flower.dev) client in Nod
 ## prerequisite
 Install :
 - python >= 3.6
-- flower library 0.18.0 : `pip install flwr==0.18.0` 
+- flower library 0.18.0 : `pip install flwr==0.18.0`
 - nodejs
 - npm
 
@@ -23,7 +23,7 @@ Finally, run the clients by using start_tfjs_client.
 const {start_tfjs_client} = require('flower-client');
 
 const tfjs_client = new Tfjs_Client();
-await start_tfjs_client('localhost:5006', tfjs_Client,);
+await start_tfjs_client('<ip>:<port>', tfjs_Client,);
 ```
 
 
