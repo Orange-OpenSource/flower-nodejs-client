@@ -18,15 +18,7 @@ const {start_tfjs_client} = require('../index');
 
 const tfjs_Client = new Tfjs_Client();
 
-(async () => {
-  try {
-    await start_tfjs_client(
-      'localhost:5006',
-      tfjs_Client
-    );
-  } catch (e) {
-    console.error(e);
-    throw e;
-  }
-})();
-
+start_tfjs_client(
+  'localhost:5006',
+  tfjs_Client
+).then();
