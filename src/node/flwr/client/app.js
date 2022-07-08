@@ -38,7 +38,8 @@ async function start_client(
   root_certificates= grpc.credentials.createInsecure(),
   grpc_max_message_length = GRPC_MAX_MESSAGE_LENGTH
 ) {
-  const client_grpc = new transport_proto.FlowerService(server_address, root_certificates, grpc_max_message_length);
+  const options = {'grpc.max_send_message_length': grpc_max_message_length,'grpc.max_receive_message_length': grpc_max_message_length};
+  const client_grpc = new transport_proto.FlowerService(server_address, root_certificates, options);
   await connect(client_grpc, client);
 }
 
