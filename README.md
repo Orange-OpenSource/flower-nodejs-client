@@ -3,7 +3,7 @@ Package that allows you to implement a [Flower](http://flower.dev) client in Nod
 ## Prerequisite
 Install :
 - python >= 3.6
-- flower library 0.18.0 : `pip install flwr==0.18.0`
+- flower library : `pip install flwr`
 - nodejs
 - npm
 
