@@ -1,9 +1,9 @@
 # Flower NodeJs Client
 Package that allows you to implement a [Flower](http://flower.dev) client in NodeJs in order to create [federated learning](https://en.wikipedia.org/wiki/Federated_learning) with [tensorflow.js](https://js.tensorflow.org/api/latest/).
-## prerequisite
+## Prerequisite
 Install :
 - python >= 3.6
-- flower library 0.18.0 : `pip install flwr==0.18.0`
+- flower library : `pip install flwr`
 - nodejs
 - npm
 

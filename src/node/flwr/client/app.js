@@ -38,7 +38,8 @@ async function start_client(
   root_certificates= grpc.credentials.createInsecure(),
   grpc_max_message_length = GRPC_MAX_MESSAGE_LENGTH
 ) {
-  const client_grpc = new transport_proto.FlowerService(server_address, root_certificates, grpc_max_message_length);
+  const options = {'grpc.max_send_message_length': grpc_max_message_length,'grpc.max_receive_message_length': grpc_max_message_length};
+  const client_grpc = new transport_proto.FlowerService(server_address, root_certificates, options);
   await connect(client_grpc, client);
 }
 
@@ -47,8 +48,8 @@ async function connect(client_grpc, client) {
   console.log('client : join');
   call.on('data', async function (server_msg) {
     const {client_message, sleep_duration, keep_going} = await handle(client, server_msg);
-    console.log('\n\nCLIENT_MESSAGE');
-    console.log(JSON.stringify(client_message, null, 2));
+    console.log('\n\nCLIENT MESSAGE');
+    console.log(client_message);
     call.write(client_message);
     if (!keep_going) {
       call.end();
