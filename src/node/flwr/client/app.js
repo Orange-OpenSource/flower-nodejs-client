@@ -48,8 +48,8 @@ async function connect(client_grpc, client) {
   console.log('client : join');
   call.on('data', async function (server_msg) {
     const {client_message, sleep_duration, keep_going} = await handle(client, server_msg);
-    console.log('\n\nCLIENT_MESSAGE');
-    console.log(JSON.stringify(client_message, null, 2));
+    console.log('\n\nCLIENT MESSAGE');
+    console.log(client_message);
     call.write(client_message);
     if (!keep_going) {
       call.end();

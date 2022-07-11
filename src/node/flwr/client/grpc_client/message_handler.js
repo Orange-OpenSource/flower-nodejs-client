@@ -14,7 +14,7 @@
 module.exports.handle = async function handle(client, server_msg) {
   let client_message = null;
   console.log('\n\nSERVER MESSAGE');
-  console.log(JSON.stringify(server_msg,null,2));
+  console.log(server_msg);
   switch (server_msg.msg) {
   case 'reconnect' :
     // eslint-disable-next-line no-case-declarations
